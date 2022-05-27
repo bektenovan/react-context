@@ -1,24 +1,23 @@
-import logo from './logo.svg';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
+import Counter from './components/Counter';
+import Counter2 from './components/Counter2';
+import CounterContextProvider from './counterContext';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <CounterContextProvider>
+      <BrowserRouter>
+
+      <Routes>
+        <Route path='/' element={<Counter />}/>
+        <Route path='/counter' element={<Counter2 />}/>
+      
+      </Routes>
+
+</BrowserRouter>
+    </CounterContextProvider>
+    
   );
 }
 
